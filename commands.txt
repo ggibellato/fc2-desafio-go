@@ -1,0 +1,15 @@
+docker build -t d_go .
+
+docker run --rm -ti -v "$PWD":/go/src/app d_go bash 
+
+
+
+go run hello-world.go
+
+go build hello.go
+go build -ldflags "-w" hello.go
+go build -ldflags "-s -w" hello.go
+
+
+docker build -t ggibellato/codeeducation -f Dockerfile.prod .
+docker run --rm ggibellato/codeeducation
